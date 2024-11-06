@@ -40,20 +40,27 @@ def kmeans(X, k, max_iters=100):
 iris = load_iris()
 X = iris.data
 
-for k in [3,5]:
-    print(f"Clusterização para k = {k}")
-    centroids, clusters = kmeans(X, k)
+n_init = 10
+best_sil_score = -1
+best_centroids = None
+best_labels = None
+
+for i in range(n_init):
+    centroids, clusters = kmeans(X, k=3)
 
     labels = []
     for i, cluster in enumerate(clusters):
         for _ in cluster:
             labels.append(i)
 
-    labels = np.array(labels)
-
     sil_score = silhouette_score(X, labels)
 
-    print(f"Silhouette Score: {sil_score}")
+    if sil_score > best_sil_score:
+        best_sil_score = sil_score
+        best_centroids = centroids
+        best_labels = labels
+
+print(f"Melhor Silhouette Score: {best_sil_score}")
 
 
 
