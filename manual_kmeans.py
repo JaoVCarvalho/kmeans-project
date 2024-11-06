@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn.datasets import load_iris
+from sklearn.metrics import silhouette_score
 
 def euclidean_distance(a, b):
     return np.sqrt(np.sum((a - b) ** 2))
@@ -36,19 +37,23 @@ def kmeans(X, k, max_iters=100):
 
     return centroids, clusters
 
-
-# Carrega o conjunto de dados Iris (desconsiderando o rótulo)
 iris = load_iris()
-X = iris.data  # Dados sem o rótulo
+X = iris.data
 
-# Executa o K-means com k=3
-k3_centroids, k3_clusters = kmeans(X, k=3)
-print("Centroides finais para k=3:\n", k3_centroids)
-print("Cluester k = 3: \n", k3_clusters)
+for k in [3,5]:
+    print(f"Clusterização para k = {k}")
+    centroids, clusters = kmeans(X, k)
 
-# Executa o K-means com k=5
-k5_centroids, k5_clusters = kmeans(X, k=5)
-print("Centroides finais para k=5:\n", k5_centroids)
-print("Cluester k = 5: \n", k5_clusters)
+    labels = []
+    for i, cluster in enumerate(clusters):
+        for _ in cluster:
+            labels.append(i)
+
+    labels = np.array(labels)
+
+    sil_score = silhouette_score(X, labels)
+
+    print(f"Silhouette Score: {sil_score}")
+
 
 
