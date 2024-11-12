@@ -16,7 +16,6 @@ kmeans.fit(X)
 labels = kmeans.labels_
 centroids = kmeans.cluster_centers_
 
-
 # Função para plotar clusters e centróides
 def plot_clusters(X, labels, centroids, n_components, y=None, target_names=None):
     plt.figure(figsize=(8, 6))
@@ -27,7 +26,7 @@ def plot_clusters(X, labels, centroids, n_components, y=None, target_names=None)
         plt.xlabel('Componente 1')
         plt.ylabel('Componente 2')
     elif n_components == 1:
-        scatter = plt.scatter(X, np.zeros_like(X), c=labels, cmap='viridis', s=50, alpha=0.7)
+        plt.scatter(X, np.zeros_like(X), c=labels, cmap='viridis', s=50, alpha=0.7)
         plt.scatter(centroids, np.zeros_like(centroids), c='red', s=200, marker='X', label='Centroids')
         plt.xlabel('Componente 1')
         plt.yticks([])  # Não mostrar o eixo y
