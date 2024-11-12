@@ -40,6 +40,6 @@ diff = snapshot_after.compare_to(snapshot_before, 'lineno')
 memory_used = sum(stat.size for stat in diff) / 1024 / 1024  # Calcular a memória total utilizada em MB
 
 # Exibir os resultados
-print(f"\nMemória total usada pelo algoritmo (em MB): {memory_used:.6f} MB")
 print(f"\nO melhor Silhouette Score é {best_score} para k={best_k}.")
+print(f"\nMemória total usada pelo algoritmo (em MB): {memory_used:.6f} MB")
 print(f"\nTempo total de execução (em segundos): {execution_time:.6f} segundos")
