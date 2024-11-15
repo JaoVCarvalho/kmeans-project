@@ -22,10 +22,8 @@ Como extensão, será realizada uma redução de dimensionalidade com PCA para 1
 
 ## Relatório
 
-A comparação entre a implementação manual (hardcore) e a biblioteca Sklearn para o algoritmo K-means na base de dados Iris revelou diferenças em qualidade de clusterização, memória e tempo de execução.
+A comparação entre a implementação manual e a biblioteca Sklearn para o algoritmo K-means na base de dados Iris revelou diferenças nos aspectos de uso de memória e tempo de execução.
 
-Silhouette Score:
-A Sklearn apresentou um Silhouette Score mais alto, indicando uma separação superior dos clusters. Com k=3, obteve o melhor desempenho, com um Silhouette Score de 0.5528, enquanto a implementação manual alcançou 0.5296 para o mesmo valor de k. Esse resultado demonstra uma vantagem da biblioteca em termos de qualidade de clusterização.
+Qualidade de Clusterização: Ambas as abordagens apresentaram a mesma qualidade de clusterização, com resultados equivalentes em termos de separação dos clusters, sendo o k = 3, o melhor.
 
-Memória e Tempo de Execução:
-A Sklearn teve maior consumo de memória (0.1457 MB vs. 0.0123 MB), reflexo das otimizações internas e recursos adicionais. No entanto, foi mais rápida, com um tempo de execução de 0.0486 segundos, em comparação com 0.0702 segundos na implementação manual.
+Memória e Tempo de Execução: A implementação manual demonstrou menor uso de memória, enquanto a biblioteca Sklearn foi mais eficiente em termos de tempo de execução, destacando-se pela rapidez nos cálculos devido às suas otimizações internas.
